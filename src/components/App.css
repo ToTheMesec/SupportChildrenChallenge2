@@ -1,0 +1,151 @@
+/* Styles go here */
+#header {
+    background: rgba(25, 25, 25, 0.95);
+    transition: all 0.5s;
+    z-index: 997;
+    height: 70px;
+}
+  
+#header.fixed-top {
+    background: #191919;
+}
+  
+#header .logo {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+  
+#header .logo a {
+    color: #fff;
+}
+  
+#header .logo img {
+    max-height: 40px;
+}
+  
+.scrolled-offset {
+    margin-top: 70px;
+}
+.navbar {
+    padding: 0;
+}
+  
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+  
+.navbar li {
+    position: relative;
+}
+  
+.navbar > ul > li {
+    margin-left: 5px;
+}
+  
+.navbar a, .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 15px 24px 15px;
+    font-size: 14px;
+    color: #19C7FD;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+  
+.navbar a i, .navbar a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+}
+  
+.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+    background: #111111;
+    /*cc1616*/
+}
+
+.forme {
+    float:right;
+    margin-top: 4em;
+}
+
+.nftext {
+
+    color:rgb(0, 0, 0);
+    font-size: 21px;
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    
+ }
+.nftext ~ #dva {
+
+   padding-top: 1em;
+}
+
+input[type=text] {
+    background: transparent;
+    color:white;
+    border: none;
+    border-bottom: 1px solid white;
+    }
+
+input[type=text]:focus {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+
+input[type=number] {
+  background: transparent;
+  color:white;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+.card{
+    width: 18rem;
+    transform-style:preserve-3d;
+    margin-top: 10rem;
+    box-shadow: 0 20px 20px rgba(0,0,0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+    margin-left: 50px;
+    position: flex;
+    display: inline-block;
+  
+}
+.card img{
+    width:100%;
+    height: 15vw;
+  
+}
+.card:hover{
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease
+}
+.row{
+    display: inline;
+}
+.box{
+    width: 350px;
+    height: 500px;
+    border: 1px solid black;
+    margin-bottom: 200px;
+    margin-left : 200px;
+}
+.box-top{
+    border-bottom: 1px solid black;
+}
