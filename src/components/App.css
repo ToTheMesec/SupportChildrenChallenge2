@@ -1,4 +1,8 @@
-/* Styles go here */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+
+
+
 #header {
     background: rgba(25, 25, 25, 0.95);
     transition: all 0.5s;
@@ -33,6 +37,7 @@
 }
 .navbar {
     padding: 0;
+    position:sticky;
 }
   
 .navbar ul {
@@ -57,7 +62,7 @@
     justify-content: space-between;
     padding: 25px 15px 24px 15px;
     font-size: 14px;
-    color: #19C7FD;
+    color: #dfdfdf;
     white-space: nowrap;
     transition: 0.3s;
 }
@@ -73,43 +78,108 @@
     /*cc1616*/
 }
 
-.forme {
-    float:right;
-    margin-top: 4em;
+.box {
+    position: relative;
+    text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 60px;
+    border: 3px solid #fff;
+    padding: 40px;
+    display: inline-block;
+    width: 100%;
+    min-width: 300px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+   background:transparent;
+  
+
+}
+
+
+ input[type=text], input[type=password], input[type=email], input[type=number], input[type=date] {
+    width: 100%;
+    padding: 9px 20px;
+    text-align: left;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    color: #8D8D8D;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin-top: 16px;
 }
 
 .nftext {
 
-    color:rgb(0, 0, 0);
-    font-size: 21px;
-    text-align: left;
-    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-size: 35px;
+    font-family: 'Roboto Slab', serif;
+    margin-left: 4px;
+
     
- }
-.nftext ~ #dva {
-
-   padding-top: 1em;
 }
 
-input[type=text] {
-    background: transparent;
-    color:white;
-    border: none;
-    border-bottom: 1px solid white;
-    }
+.deadline {
 
-input[type=text]:focus {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #000000;
+    color: white;
+    font-size: 20px;
+    font-family: 'Roboto Slab', serif;
+    margin-left: 4px;
+    margin-top: 4px;
+    margin-bottom: -2px;
+    
 }
 
-input[type=number] {
-  background: transparent;
-  color:white;
-  border: none;
-  border-bottom: 1px solid white;
+::placeholder {
+    color:black;
+    font-size:16px;
 }
+
+      /*
+      button {
+      display: block;
+      width: 200px;
+      padding: 10px;
+      margin: 20px auto 0;
+      border: none;
+      border-radius: 5px; 
+      background: #1c87c9; 
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+      */
+     
+      @media (min-width: 568px) {
+      .info {
+      flex-flow: row wrap;
+      justify-content: space-between;
+      }
+      input {
+      width: 46%;
+      }
+      input.fname {
+      width: 100%;
+      }
+      select {
+      width: 48%;
+      }
+      }
 
 .card{
     width: 18rem;
@@ -136,16 +206,110 @@ input[type=number] {
     -o-transition: all 500ms ease;
     transition: all 500ms ease
 }
-.row{
-    display: inline;
+
+#celaForma {
+    
+    border-radius: 15px;
+    padding: 10px;
+    margin-left:200px;
+    margin-right:200px;
+    margin-bottom: 40px;
+    box-shadow: 20px 20px rgba(0,0,0,.15);
+
 }
-.box{
-    width: 350px;
-    height: 500px;
-    border: 1px solid black;
-    margin-bottom: 200px;
-    margin-left : 200px;
+
+.labelButton {
+    justify-content: center;
+    align-items: center;
+    margin-left:50px;
+    
 }
-.box-top{
-    border-bottom: 1px solid black;
+
+.fileChoose {
+
+
+    padding:140px;
+    border-radius:15px;
+    border-style: dotted;
+    border-color:white;
+    margin-top: 10px;
+    color:white;
+
+}
+
+button {
+    background:transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px;
+    border-radius:15px;
+  }
+
+  button.uploader {
+    background:transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px;
+    padding-left: 162px;
+    padding-right: 162px;
+    border-radius:15px;
+    margin-top: 20px;
+  }
+  
+  
+
+
+
+
+
+.buttonCampaign {
+
+
+    margin-top: 20px;
+    margin-left: 14px;
+    padding: 10px 200px;
+    white-space: nowrap;
+    text-align: center;
+} 
+
+.bar {
+    background-color:transparent;
+    margin-top: 20px;
+    height:23px;
+    width: 380px;
+    color:white;
+    
+}
+.progress-bar {
+
+    background-color: white;
+}
+
+.rootdiv {
+    background-image: url('https://i.imgur.com/1cGALG9.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:100%;
+    margin: 0;
+    height: auto;
+
+}
+.root{
+    height: 100%;
+}
+
+
+html, body{
+    /* Height and width fallback for older browsers. */
+    min-height: 100%;
+    margin: 0;
+
+}
+
+body > #root > div {
+    height: 100vh;
+  }
+
+.row {
+    margin-top: 1.9em;
 }

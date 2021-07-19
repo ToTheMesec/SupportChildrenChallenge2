@@ -5,7 +5,8 @@ import SaveChildren from '../abis/SaveChildren.json'
 import './App.css';
 import Discover from '../pages/Discover';
 import ReactDOM from "react-dom";
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import ProgressBar from 'react-bootstrap/ProgressBar';
+import ipfs from "../ipfs";
 
 class App extends Component {
 
@@ -14,6 +15,7 @@ class App extends Component {
     this.setState({
       selectedFile: event.target.files[0]
     })
+    this.captureFile(event)
   }
 
   fileUploadHandler = () => {
@@ -33,6 +35,9 @@ class App extends Component {
           this.setState({
             img: res.data.secure_url,
           })
+          document.getElementById('fileChoose').style = "background-image: url('" + res.data.secure_url + "'); background-repeat: no-repeat; background-size: cover";
+          document.getElementById('fileChoose').style.color = "rgba(0, 0, 0, 0)";
+          this.onSubmit()
         })
   }
 
@@ -87,15 +92,62 @@ class App extends Component {
       img: '',
       prog:0,
       contract: null,
-      account: ''
+      account: '',
+      ipfsHash: '',
+      buffer: '',
+      ethAddress: '',
+      blockNumber: '',
+      transactionHash: '',
+      gasUsed: '',
+      txReceipt: '',
 
     }
   }
 
+  captureFile = (event) => {
+      event.stopPropagation()
+      event.preventDefault()
+      const file = event.target.files[0]
+      let reader = new window.FileReader()
+      reader.readAsArrayBuffer(file)
+      reader.onloadend = () => this.convertToBuffer(reader)
+  };
+
+  convertToBuffer = async (reader) => {
+      //file is converted to a buffer for upload to IPFS
+      const buffer = await Buffer.from(reader.result);
+      //set this buffer -using es6 syntax
+      this.setState({buffer});
+  };
+
+  onSubmit = async () => {
+  //bring in user's metamask account address
+  // const accounts = await web3.eth.getAccounts();
+  //
+  // console.log('Sending from Metamask account: ' + accounts[0]);
+  // //obtain contract address from storehash.js
+  // const ethAddress = await storehash.options.address;
+  // this.setState({ethAddress});
+
+  await ipfs.add(this.state.buffer, (err, ipfsHash) => {
+      console.log(err, ipfsHash);//TODO
+
+      this.setState({ipfsHash: ipfsHash[0].hash});
+
+      // call Ethereum contract method "sendHash" and .send IPFS hash to etheruem contract
+      // storehash.methods.sendHash(this.state.ipfsHash).send({
+      //     from: accounts[0]
+      // }, (error, transactionHash) => {
+      //     console.log("FFFFFFFFFFF4 " + transactionHash);
+      //     this.setState({transactionHash});
+      // }); //storehash
+  }) //await ipfs.add
+  }; //onSubmit
+
   createCampaign = () => {
     var timestamp = Date.parse(this.state.date)
     timestamp/=1000
-    this.state.contract.methods.createCampaign(this.state.name, this.state.desc, this.state.account, timestamp, (parseFloat(this.state.goal)*(10**18)).toString(), this.state.email, this.state.img).send({from: this.state.account})
+    this.state.contract.methods.createCampaign(this.state.name, this.state.desc, this.state.account, timestamp, (parseFloat(this.state.goal)*(10**18)).toString(), this.state.email, "https://ipfs.io/ipfs/" + this.state.ipfsHash).send({from: this.state.account})
   }
 
   updateNameValue(evt) {
@@ -133,10 +185,11 @@ class App extends Component {
     ReactDOM.render(<Discover />, document.getElementById('root'))
   }
 
+  
 
   render() {
     return (
-        <div style = {{backgroundColor: '#EC4646'}}>
+        <div className = "rootdiv">
           <header id="header" className="d-flex align-items-center">
             <div className="container d-flex align-items-center justify-content-between">
 
@@ -156,40 +209,46 @@ class App extends Component {
 
             </div>
           </header>
-          <div className="container-fluid mt-5">
-            <div className="row">
-              <main role="main" className="col-lg-12 d-flex text-center">
-                <div className="content mr-auto ml-auto">
-                  <div className="forme">
-                    <p className="nftext">Campaign title:</p>
-                    <input type="text" name="name" onChange = {evt => this.updateNameValue(evt)}/>
-                    <p className="nftext" id="dva">Campaign description:</p>
-                    <div className="textarea">
-                      <input type="text" onChange ={evt => this.updateDescValue(evt)}></input>
-                    </div>
-                    <p className="nftext" id="dva">Campaign goal</p>
-                    <div className="numberarea">
-                      <input type="number" onChange = {evt => this.updateCampaignGoal(evt)}></input>
-                    </div>
-                    <p className="nftext" id="dva">Campaign deadline</p>
-                    <div>
-                      <input type="date" onChange = {evt => this.updateDate(evt)}></input>
-                    </div>
-                    <p className="nftext" id="dva">Enter your email if you want to get notified</p>
-                    <div>
-                      <input type="text" placeholder="This field is optional" onChange = {evt => this.updateEmail(evt)}></input>
-                    </div>
+          <div className="container-fluid">
+          <div className="row">
+         
+            <main role="main" className="col-lg-12 d-flex text-center">
+            <div className="labelButton">
+        <input id="fileUpload" type = "file" onChange={this.fileSelectedHandler} hidden/>
+        <label id="fileChoose" className="fileChoose" htmlFor="fileUpload" >Choose Image</label>
+        <ProgressBar className="bar" now={this.state.prog} />
+        <button className="uploader" onClick = {this.fileUploadHandler}>Upload</button>
+        </div>
+              <div id= "celaForma" className="content">
+                <div className="box">
+                <p className="nftext" id="dva">Create campaign</p>
+                  <input  placeholder="Campaign title" type="text" name="name" onChange = {evt => this.updateNameValue(evt)}/>
+                  <div className="textarea">
+                    <input size="100" placeholder="Campaign description" type="text" onChange ={evt => this.updateDescValue(evt)}></input>
                   </div>
+          
+                  <div className="numberarea">
+                    <input  placeholder="Campaign goal"type="number" onChange = {evt => this.updateCampaignGoal(evt)}></input>
+                  </div>
+                  <div>
+                  <p className="deadline" id="dva">Campaign deadline</p>
+                    <input  placeholder="Campaign deadline" type="date" onChange = {evt => this.updateDate(evt)}></input>
+                  </div>
+          
+                  <div>
+                    <input type="text" placeholder="Enter your email" onChange = {evt => this.updateEmail(evt)}></input>
+                    <button className="buttonCampaign" onClick = {this.createCampaign} >Create campaign</button>
+                  </div>
+          
+                  
+  
                 </div>
-                <div><button onClick = {this.createCampaign}>Create a campaign</button></div>
-              </main>
-            </div>
+                
+              </div>
+              
+            </main>
           </div>
-          <div id = "myID"  ></div>
-          <input id="fileUpload" type = "file" onChange={this.fileSelectedHandler} hidden/>
-          <label htmlFor="fileUpload">Choose File</label>
-          <button onClick = {this.fileUploadHandler}>Upload</button>
-          <ProgressBar now = {this.state.prog} />
+        </div>
         </div>
     );
   }

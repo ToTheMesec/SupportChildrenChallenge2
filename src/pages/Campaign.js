@@ -4,6 +4,7 @@ import Web3 from 'web3';
 import SaveChildren from '../abis/SaveChildren.json'
 import '../components/App.css';
 import Discover from './Discover';
+import App from '../components/App';
 import ReactDOM from "react-dom";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import emailjs from 'emailjs-com';
@@ -92,8 +93,15 @@ class Campaign extends Component{
           }, (error) => {
               console.log(error.text);
           });
-      }
+    }
 
+    moveToDiscover = () => {
+        ReactDOM.render(<Discover />, document.getElementById('root'))
+    }
+    
+    moveToCreate = () => {
+        ReactDOM.render(<App />, document.getElementById('root'))
+    }
 
     render(){
 
@@ -107,8 +115,8 @@ class Campaign extends Component{
                         <nav id="navbar" className="navbar">
                             <ul>
                                 <li><a className="nav-link scrollto" href="../public/home.html">Home</a></li>
-                                <li><a className="nav-link scrollto" href="#about">Discover</a></li>
-                                <li className="active"><a><span>Create a campaign</span> <i className="bi bi-chevron-down"></i></a></li>
+                                <li><a className="nav-link text-white" onClick = {this.moveToDiscover}>Discover</a></li>
+                                <li><a onClick = {this.moveToCreate} className = "nav-link text-white"><span>Create a campaign</span> <i className="bi bi-chevron-down"></i></a></li>
                                 <li className = "nav-item text-nowrap d-none d-sm-none d-sm-block">
                                     <small className = "text-white"><span id = "account">{this.state.account}</span></small>
                                 </li>
