@@ -7,6 +7,9 @@ import Discover from '../pages/Discover';
 import ReactDOM from "react-dom";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import ipfs from "../ipfs";
+import web3 from "../web3";
+import storehash from "../storehash";
+import emailjs from "emailjs-com";
 
 class App extends Component {
 
@@ -37,8 +40,8 @@ class App extends Component {
           })
           document.getElementById('fileChoose').style = "background-image: url('" + res.data.secure_url + "'); background-repeat: no-repeat; background-size: cover";
           document.getElementById('fileChoose').style.color = "rgba(0, 0, 0, 0)";
-          this.onSubmit()
         })
+    this.onSubmit()
   }
 
   async componentWillMount() {
@@ -93,6 +96,7 @@ class App extends Component {
       prog:0,
       contract: null,
       account: '',
+
       ipfsHash: '',
       buffer: '',
       ethAddress: '',
@@ -101,8 +105,11 @@ class App extends Component {
       gasUsed: '',
       txReceipt: '',
 
+
     }
   }
+
+
 
   captureFile = (event) => {
       event.stopPropagation()
@@ -121,26 +128,11 @@ class App extends Component {
   };
 
   onSubmit = async () => {
-  //bring in user's metamask account address
-  // const accounts = await web3.eth.getAccounts();
-  //
-  // console.log('Sending from Metamask account: ' + accounts[0]);
-  // //obtain contract address from storehash.js
-  // const ethAddress = await storehash.options.address;
-  // this.setState({ethAddress});
 
   await ipfs.add(this.state.buffer, (err, ipfsHash) => {
       console.log(err, ipfsHash);//TODO
 
       this.setState({ipfsHash: ipfsHash[0].hash});
-
-      // call Ethereum contract method "sendHash" and .send IPFS hash to etheruem contract
-      // storehash.methods.sendHash(this.state.ipfsHash).send({
-      //     from: accounts[0]
-      // }, (error, transactionHash) => {
-      //     console.log("FFFFFFFFFFF4 " + transactionHash);
-      //     this.setState({transactionHash});
-      // }); //storehash
   }) //await ipfs.add
   }; //onSubmit
 
@@ -181,6 +173,17 @@ class App extends Component {
     })
   }
 
+  sendEmail(e) {
+    e.preventDefault();
+
+    emailjs.sendForm('service_7zotz9y', 'template_2uirx3l', e.target, 'user_4u7WjbA2GZUJYYM6i8nrV')
+        .then((result) => {
+          console.log(result.text);
+        }, (error) => {
+          console.log(error.text);
+        });
+  }
+
   moveToDiscover = () => {
     ReactDOM.render(<Discover />, document.getElementById('root'))
   }
@@ -213,39 +216,34 @@ class App extends Component {
           <div className="row">
          
             <main role="main" className="col-lg-12 d-flex text-center">
-            <div className="labelButton">
-        <input id="fileUpload" type = "file" onChange={this.fileSelectedHandler} hidden/>
-        <label id="fileChoose" className="fileChoose" htmlFor="fileUpload" >Choose Image</label>
-        <ProgressBar className="bar" now={this.state.prog} />
-        <button className="uploader" onClick = {this.fileUploadHandler}>Upload</button>
-        </div>
-              <div id= "celaForma" className="content">
-                <div className="box">
-                <p className="nftext" id="dva">Create campaign</p>
-                  <input  placeholder="Campaign title" type="text" name="name" onChange = {evt => this.updateNameValue(evt)}/>
-                  <div className="textarea">
-                    <input size="100" placeholder="Campaign description" type="text" onChange ={evt => this.updateDescValue(evt)}></input>
-                  </div>
-          
-                  <div className="numberarea">
-                    <input  placeholder="Campaign goal"type="number" onChange = {evt => this.updateCampaignGoal(evt)}></input>
-                  </div>
-                  <div>
-                  <p className="deadline" id="dva">Campaign deadline</p>
-                    <input  placeholder="Campaign deadline" type="date" onChange = {evt => this.updateDate(evt)}></input>
-                  </div>
-          
-                  <div>
-                    <input type="text" placeholder="Enter your email" onChange = {evt => this.updateEmail(evt)}></input>
-                    <button className="buttonCampaign" onClick = {this.createCampaign} >Create campaign</button>
-                  </div>
-          
-                  
-  
-                </div>
-                
+              <div className="labelButton">
+                <input id="fileUpload" type = "file" onChange={this.fileSelectedHandler} hidden/>
+                <label id="fileChoose" className="fileChoose" htmlFor="fileUpload" >Choose Image</label>
+                <ProgressBar className="bar" now={this.state.prog} />
+                <button className="uploader" onClick = {this.fileUploadHandler}>Upload</button>
               </div>
-              
+              <div id= "celaForma" className="content">
+                <form style = {{borderBottom: '1px solid black'}} onSubmit ={this.sendEmail}>
+                  <div className="box">
+                    <p className="nftext" id="dva">Create campaign</p>
+                    <input  placeholder="Campaign title" type="text" name="name" onChange = {evt => this.updateNameValue(evt)}/>
+                    <div className="textarea">
+                      <input size="100" placeholder="Campaign description" type="text" onChange ={evt => this.updateDescValue(evt)}></input>
+                    </div>
+                    <div className="numberarea">
+                      <input  placeholder="Campaign goal"type="number" onChange = {evt => this.updateCampaignGoal(evt)}></input>
+                    </div>
+                    <div>
+                    <p className="deadline" id="dva">Campaign deadline</p>
+                      <input  placeholder="Campaign deadline" type="date" onChange = {evt => this.updateDate(evt)}></input>
+                    </div>
+                    <div>
+                      <input name = "user_email" type="text" placeholder="Enter your email" onChange = {evt => this.updateEmail(evt)}></input>
+                      <button className="buttonCampaign" onClick = {this.createCampaign} >Create campaign</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </main>
           </div>
         </div>

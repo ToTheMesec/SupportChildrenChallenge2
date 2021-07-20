@@ -17,11 +17,17 @@ class Campaign extends Component{
             contract: null,
             account: '',
             campaign: '',
-            amount: ''
+            amount: '',
+            email: '',
         }
     }
 
-    
+    updateEmail(evt) {
+        this.setState({
+            email: evt.target.value
+        })
+
+    }
 
     async componentWillMount() {
         await this.loadWeb3()
@@ -80,8 +86,19 @@ class Campaign extends Component{
       }
 
     donate = () => {
-        this.state.contract.methods.donate(parseInt(this.state.campaign.id), "programmingluka@gmail.com")
+        this.state.contract.methods.donate(parseInt(this.state.campaign.id), this.state.email)
         .send({from: this.state.account, value: parseFloat(this.state.amount)*(10**18)})
+
+
+        var templateParams = {
+            user_email: this.state.campaign.email,
+        };
+        emailjs.send('service_7zotz9y', 'template_2uirx3l', templateParams, 'user_4u7WjbA2GZUJYYM6i8nrV')
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+                console.log('FAILED...', error);
+            });
     }
 
     sendEmail(e) {
@@ -142,7 +159,7 @@ class Campaign extends Component{
                         <ProgressBar max={parseInt(this.state.campaign.goal)/(10**18)} now = {parseInt(this.state.campaign.raised)/(10**18)} style ={{margin :'10px 10px 10px 10px'}}/>
                     </div>
                     <form style = {{borderBottom: '1px solid black'}} onSubmit ={this.sendEmail}>
-                        <input type="text" style = {{backgroundColor: 'black'}} name = "user_email"/>
+                        <input name = "user_email" type="text" placeholder="Enter your email" onChange = {evt => this.updateEmail(evt)}></input>
                         <input onChange = {evt =>  this.upadateAmount(evt)} style = {{border: '1px solid black'}} name = "donation_amount"></input>
                         <button className = 'btn btn-primary' onClick = {this.donate} type = "submit">Donate</button>
                     </form>

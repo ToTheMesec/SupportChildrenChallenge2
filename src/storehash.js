@@ -1,6 +1,4 @@
-import Web3 from 'web3';
-//overrides metamask v0.2 for our v 1.0
-const web3 = new Web3(window.web3.currentProvider);
+import web3 from './web3';
 
 //access our local copy to contract deployed on rinkeby testnet
 //use your own contract address
