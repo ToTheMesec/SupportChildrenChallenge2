@@ -7,9 +7,8 @@ import Discover from '../pages/Discover';
 import ReactDOM from "react-dom";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import ipfs from "../ipfs";
-import web3 from "../web3";
-import storehash from "../storehash";
 import emailjs from "emailjs-com";
+import Home from "../pages/Home"
 
 class App extends Component {
 
@@ -33,20 +32,20 @@ class App extends Component {
         })
       }
     })
-        .then(res => {
-          console.log(res.data.secure_url);
-          this.setState({
-            img: res.data.secure_url,
-          })
-          document.getElementById('fileChoose').style = "background-image: url('" + res.data.secure_url + "'); background-repeat: no-repeat; background-size: cover";
-          document.getElementById('fileChoose').style.color = "rgba(0, 0, 0, 0)";
-        })
+    .then(res => {
+      console.log(res.data.secure_url);
+      this.setState({
+        img: res.data.secure_url,
+      })
+      document.getElementById('fileChoose').style = "background-image: url('" + res.data.secure_url + "'); background-repeat: no-repeat; background-size: cover";
+      document.getElementById('fileChoose').style.color = "rgba(0, 0, 0, 0)";
+    })
     this.onSubmit()
   }
 
   async componentWillMount() {
     await this.loadWeb3()
-    await this.loadBlockchainData()
+      await this.loadBlockchainData()
   }
 
   async loadWeb3() {
@@ -128,18 +127,21 @@ class App extends Component {
   };
 
   onSubmit = async () => {
+    await ipfs.add(this.state.buffer, (err, ipfsHash) => {
+        console.log(err, ipfsHash);//TODO
 
-  await ipfs.add(this.state.buffer, (err, ipfsHash) => {
-      console.log(err, ipfsHash);//TODO
-
-      this.setState({ipfsHash: ipfsHash[0].hash});
-  }) //await ipfs.add
+        this.setState({ipfsHash: ipfsHash[0].hash});
+    }) //await ipfs.add
   }; //onSubmit
 
-  createCampaign = () => {
+  createCampaign = (evt) => {
+    evt.preventDefault()
     var timestamp = Date.parse(this.state.date)
     timestamp/=1000
-    this.state.contract.methods.createCampaign(this.state.name, this.state.desc, this.state.account, timestamp, (parseFloat(this.state.goal)*(10**18)).toString(), this.state.email, "https://ipfs.io/ipfs/" + this.state.ipfsHash).send({from: this.state.account})
+    this.state.contract.methods.createCampaign(this.state.name, this.state.desc, this.state.account, timestamp, (parseFloat(this.state.goal)*(10**18)).toString(), this.state.email, "https://ipfs.io/ipfs/" + this.state.ipfsHash)
+    .send({from: this.state.account}).then(evt => {
+      this.sendEmail()
+    })
   }
 
   updateNameValue(evt) {
@@ -176,9 +178,14 @@ class App extends Component {
   sendEmail(e) {
     e.preventDefault();
 
-    emailjs.sendForm('service_7zotz9y', 'template_2uirx3l', e.target, 'user_4u7WjbA2GZUJYYM6i8nrV')
+    emailjs.sendForm('service_7zotz9y', 'template_xxy6n1q', e.target, 'user_4u7WjbA2GZUJYYM6i8nrV')
         .then((result) => {
           console.log(result.text);
+          const element = document.getElementById("alert");
+          const check = document.createElement('p');
+          check.innerHTML = "You have successfully created a campaign, good luck!";
+          check.style = "color: #00FF00; font-size: 20px;"
+          element.appendChild(check);
         }, (error) => {
           console.log(error.text);
         });
@@ -188,30 +195,13 @@ class App extends Component {
     ReactDOM.render(<Discover />, document.getElementById('root'))
   }
 
-  
+  moveToHome = () => {
+    ReactDOM.render(<Home />, document.getElementById('root'))
+  }
 
   render() {
     return (
         <div className = "rootdiv">
-          <header id="header" className="d-flex align-items-center">
-            <div className="container d-flex align-items-center justify-content-between">
-
-              <h1 className="logo"><a href="index.html">TTM</a></h1>
-
-              <nav id="navbar" className="navbar">
-                <ul>
-                  <li><a className="nav-link text-white">Home</a></li>
-                  <li><a className="nav-link text-white" onClick = {this.moveToDiscover}>Discover</a></li>
-                  <li className="active"><a className="nav-link text-white">Create a campaign<i className="bi bi-chevron-down"></i></a></li>
-                  <li className = "nav-item text-nowrap d-none d-sm-none d-sm-block">
-                    <small className = "text-white"><span id = "account">{this.state.account}</span></small>
-                  </li>
-                </ul>
-                <i className="bi bi-list mobile-nav-toggle"></i>
-              </nav>
-
-            </div>
-          </header>
           <div className="container-fluid">
           <div className="row">
          
@@ -220,27 +210,28 @@ class App extends Component {
                 <input id="fileUpload" type = "file" onChange={this.fileSelectedHandler} hidden/>
                 <label id="fileChoose" className="fileChoose" htmlFor="fileUpload" >Choose Image</label>
                 <ProgressBar className="bar" now={this.state.prog} />
-                <button className="uploader" onClick = {this.fileUploadHandler}>Upload</button>
+                <button id="uploaderBtn" className="uploader" onClick = {this.fileUploadHandler}>Upload</button>
               </div>
               <div id= "celaForma" className="content">
-                <form style = {{borderBottom: '1px solid black'}} onSubmit ={this.sendEmail}>
+                <form style = {{borderBottom: '1px solid black'}} onSubmit ={evt => {this.createCampaign(evt)}}>
                   <div className="box">
-                    <p className="nftext" id="dva">Create campaign</p>
-                    <input  placeholder="Campaign title" type="text" name="name" onChange = {evt => this.updateNameValue(evt)}/>
+                    <p className="nftext" id="naslov">Create campaign</p>
+                    <input  placeholder="Campaign title" type="text" name="name" onChange = {evt => this.updateNameValue(evt)} name = "campaign_name" required/>
                     <div className="textarea">
-                      <input size="100" placeholder="Campaign description" type="text" onChange ={evt => this.updateDescValue(evt)}></input>
+                      <input size="100" placeholder="Campaign description" type="text" onChange ={evt => this.updateDescValue(evt)} name = "campaign_description" required></input>
                     </div>
                     <div className="numberarea">
-                      <input  placeholder="Campaign goal"type="number" onChange = {evt => this.updateCampaignGoal(evt)}></input>
+                      <input  placeholder="Campaign goal"type="number" onChange = {evt => this.updateCampaignGoal(evt)} name = "campaign_goal" required></input>
                     </div>
                     <div>
                     <p className="deadline" id="dva">Campaign deadline</p>
-                      <input  placeholder="Campaign deadline" type="date" onChange = {evt => this.updateDate(evt)}></input>
+                      <input  placeholder="Campaign deadline" type="date" onChange = {evt => this.updateDate(evt)} name = "campaign_deadline" required></input>
                     </div>
                     <div>
-                      <input name = "user_email" type="text" placeholder="Enter your email" onChange = {evt => this.updateEmail(evt)}></input>
-                      <button className="buttonCampaign" onClick = {this.createCampaign} >Create campaign</button>
+                      <input name="owner_mail" type="text" placeholder="Enter your email" onChange = {evt => this.updateEmail(evt)}></input>
+                      <button className="buttonCampaign"  type = "submit" >Create campaign</button>
                     </div>
+                    <div id = "alert"></div>
                   </div>
                 </form>
               </div>

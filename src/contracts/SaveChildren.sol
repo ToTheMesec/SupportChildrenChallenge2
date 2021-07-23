@@ -16,6 +16,11 @@ contract SaveChildren{
         bool isFinished;
     }
 
+    struct Donation{
+        address payable from;
+        uint256 amount;
+    }
+
     //----------------------------FIELDS----------------
 
     address private owner = msg.sender;
@@ -24,10 +29,10 @@ contract SaveChildren{
 
     mapping(address => bool) public admins;
 
-    mapping(address => string[]) public mails;
+    mapping(uint256 => string[]) public mails;
 
     //map of all donors of a certain campaign
-    mapping(uint256 => address[]) public donors;
+    mapping(uint256 => Donation[]) public donors;
 
 
     //----------------------------MODIFIERS----------------
@@ -77,13 +82,17 @@ contract SaveChildren{
         campaigns[id].owner.transfer(msg.value);
         campaigns[id].raised+=msg.value;
 
-        donors[id].push(donor);
-        mails[campaigns[id].owner].push(_email);
+        Donation memory newDon;
+        newDon.from = donor;
+        newDon.amount = msg.value;
 
-        if(campaigns[id].raised > campaigns[id].goal){
-            campaigns[id].isFinished = true;
-            emit CampaignFinished(id);
-        }
+        donors[id].push(newDon);
+        mails[id].push(_email);
+
+//        if(campaigns[id].raised > campaigns[id].goal){
+//            campaigns[id].isFinished = true;
+//            emit CampaignFinished(id);
+//        }
 
         emit DonationEvent(donor, msg.value, id);
     }
@@ -92,7 +101,7 @@ contract SaveChildren{
         return donors[id].length;
     }
 
-    function getDonors(uint256 id) public view returns(address[] memory){
+    function getDonors(uint256 id) public view returns(Donation[] memory){
         return donors[id];
     }
 
@@ -102,6 +111,10 @@ contract SaveChildren{
 
     function getCampaigns() public view returns(Campaign[] memory){
         return campaigns;
+    }
+    
+    function getMailsById(uint256 id) public view returns(string[] memory){
+        return mails[id];
     }
 
     //----------------------------EVENTS----------------

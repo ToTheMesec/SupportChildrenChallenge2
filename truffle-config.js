@@ -2,10 +2,11 @@ require('babel-register');
 require('babel-polyfill');
 
 const HDWalletProvider = require('@truffle/hdwallet-provider')
-//https://rinkeby.infura.io/v3/10792650c88f4b4b9636a1ec6054ad74
-
 const fs = require('fs')
-const mnemonic = "heavy credit group dove merge pen soccer jewel door gloom kit wet"
+
+require('dotenv').config();
+var mnemonic = process.env["NEMONIC"];
+var tokenKey = process.env["ENDPOINT_KEY"];
 
 module.exports = {
   networks: {
@@ -16,7 +17,7 @@ module.exports = {
     },
     rinkeby: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/388bc06946784530b76b3c8e405da1e4");
+        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/" + tokenKey);
       },
       network_id: 4,
       gas: 4500000,

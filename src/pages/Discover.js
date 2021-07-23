@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import {Image} from 'cloudinary-react'
 import Web3 from 'web3';
 import SaveChildren from '../abis/SaveChildren.json'
 import '../components/App.css';
 import App from '../components/App';
 import Campaign from './Campaign';
 import ReactDOM from "react-dom";
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import Home from "./Home"
 
 class Discover extends Component{
 
@@ -116,29 +115,26 @@ class Discover extends Component{
         ReactDOM.render(<Discover />, document.getElementById('root'))
     }
 
+    moveToHome = () => {
+        ReactDOM.render(<Home />, document.getElementById('root'))
+    }
+
     render() {
         return (
             <div>
-                <header id="header" className="d-flex align-items-center">
-                    <div className="container d-flex align-items-center justify-content-between">
-
-                        <h1 className="logo"><a href="index.html">TTM</a></h1>
-
-                        <nav id="navbar" className="navbar">
-                            <ul>
-                                <li><a className="nav-link text-white">Home</a></li>
-                                <li className="active"><a className="nav-link text-white">Discover</a></li>
-                                <li><a onClick = {this.moveToCreate} className = "nav-link text-white"><span>Create a campaign</span> <i className="bi bi-chevron-down"></i></a></li>
-                                <li className = "navbar-nav px-3">
-                                    <li className = "nav-item text-nowrap d-none d-sm-none d-sm-block">
-                                        <small className = "text-white"><span id = "account">{this.state.account}</span></small>
-                                    </li>
-                                </li>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <div className="container px-4 px-lg-5">
+                        <a className="navbar-brand" href="#!">Support Children</a>
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon" /></button>
+                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                                <li className="nav-item"><a className="nav-link active" aria-current="page" href="#!" onClick={this.moveToHome}>Home</a></li>
+                                <li className="nav-item"><a className="nav-link active" href="#!" onClick={this.moveToDiscover}>Discover</a></li>
+                                <li className="nav-item"><a className="nav-link active" href="#!" onClick={this.moveToCreate}>Create a Campaign</a></li>
                             </ul>
-                            <i className="bi bi-list mobile-nav-toggle"></i>
-                        </nav>
+                        </div>
                     </div>
-                </header>
+                </nav>
                 <div className="container-fluid mt-5">
                     <div className="row">
                         <main role="main" className="col-lg-12 d-flex text-center">

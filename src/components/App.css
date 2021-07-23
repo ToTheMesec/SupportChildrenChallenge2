@@ -1,19 +1,37 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200&display=swap');
 
 
-
-#header {
-    background: rgba(25, 25, 25, 0.95);
-    transition: all 0.5s;
+header  {
     z-index: 997;
-    height: 70px;
+    background-color: peru;
+    color: black;
 }
-  
+
+.slika  {
+    z-index: 997;
+    height: 400px;
+    background-image: url("https://media.discordapp.net/attachments/837326649074516048/867172515829776384/mini_blur.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(0.7);
+}
+
+.kita{
+    width: 100%;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: opacity 500ms ease, -webkit-transform 500ms ease;
+    transition: opacity 500ms ease, -webkit-transform 500ms ease;
+    transition: transform 500ms ease, opacity 500ms ease;
+    transition: transform 500ms ease, opacity 500ms ease;
+}
+
 #header.fixed-top {
     background: #191919;
 }
-  
+
 #header .logo {
     font-size: 30px;
     margin: 0;
@@ -23,23 +41,29 @@
     letter-spacing: 2px;
     text-transform: uppercase;
 }
-  
+
 #header .logo a {
     color: #fff;
 }
-  
+
 #header .logo img {
     max-height: 40px;
 }
-  
+
 .scrolled-offset {
     margin-top: 70px;
 }
 .navbar {
     padding: 0;
     position:sticky;
+    background-color:#242323;
+    border-bottom: 2px solid black;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,1);
+    font-weight: 400;
+    color: "#6c757d";
+    font: "Jost", sans-serif;
 }
-  
+
 .navbar ul {
     margin: 0;
     padding: 0;
@@ -47,36 +71,27 @@
     list-style: none;
     align-items: center;
 }
-  
+
 .navbar li {
     position: relative;
 }
-  
+
 .navbar > ul > li {
     margin-left: 5px;
 }
-  
+
 .navbar a, .navbar a:focus {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 25px 15px 24px 15px;
-    font-size: 14px;
-    color: #dfdfdf;
+    font-weight: 400;
     white-space: nowrap;
     transition: 0.3s;
+    text-decoration: 'none'; 
+    color: "#6c757d";
 }
-  
-.navbar a i, .navbar a:focus i {
-    font-size: 12px;
-    line-height: 0;
-    margin-left: 5px;
-}
-  
-.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-    background: #111111;
-    /*cc1616*/
-}
+
 
 .box {
     position: relative;
@@ -103,12 +118,48 @@
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
    background:transparent;
-  
+
 
 }
 
+.box1 {
+    position: relative;
+    align-items: center;
+    display: inline-block;
+    min-width: 300px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0px 5px 10px 1px;
+    transition: all 0.4s ease;
+    background:transparent;
+    margin-left: 10px;
+}
+.box-top{
+    border-bottom: 1px solid black;
+}
+.donationForm{
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+}
 
- input[type=text], input[type=password], input[type=email], input[type=number], input[type=date] {
+.donationTop{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.donationTop input{
+    width: 100%;
+    border: 1px solid gray;
+}
+
+.donationBottom input{
+    width: 75%;
+}
+
+ [type=text], input[type=password], input[type=email], input[type=number], input[type=date] {
     width: 100%;
     padding: 9px 20px;
     text-align: left;
@@ -124,6 +175,11 @@
     margin-top: 16px;
 }
 
+.donationMail{
+    padding-right: 20px;
+    border: 1px solid black;
+}
+
 .nftext {
 
     color: white;
@@ -131,7 +187,7 @@
     font-family: 'Roboto Slab', serif;
     margin-left: 4px;
 
-    
+
 }
 
 .deadline {
@@ -142,7 +198,7 @@
     margin-left: 4px;
     margin-top: 4px;
     margin-bottom: -2px;
-    
+
 }
 
 ::placeholder {
@@ -157,14 +213,14 @@
       padding: 10px;
       margin: 20px auto 0;
       border: none;
-      border-radius: 5px; 
-      background: #1c87c9; 
+      border-radius: 5px;
+      background: #1c87c9;
       font-size: 14px;
       font-weight: 600;
       color: #fff;
       }
       */
-     
+
       @media (min-width: 568px) {
       .info {
       flex-flow: row wrap;
@@ -182,33 +238,37 @@
       }
 
 .card{
-    width: 18rem;
+    width: 400px;
+    height: 600px;
     transform-style:preserve-3d;
-    margin-top: 10rem;
     box-shadow: 0 20px 20px rgba(0,0,0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
-    margin-left: 50px;
-    position: flex;
     display: inline-block;
-  
+    border-radius: 15px;
+
+}
+.card-title{
+    padding-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px solid gray;
 }
 .card img{
-    width:100%;
-    height: 15vw;
-  
+    width:372px;
+    height: 302px;
+    padding-top: 9px;
+    transition: all .2s ease-in-out;
 }
 .card:hover{
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
-    -webkit-transition: all 500ms ease;
-    -moz-transition: all 500ms ease;
-    -ms-transition: all 500ms ease;
-    -o-transition: all 500ms ease;
-    transition: all 500ms ease
+    cursor: pointer;
+}
+
+.card img:hover{
+    transform: scale(1.07);
+    border-radius: 15px;
+    
 }
 
 #celaForma {
-    
+
     border-radius: 15px;
     padding: 10px;
     margin-left:200px;
@@ -222,18 +282,17 @@
     justify-content: center;
     align-items: center;
     margin-left:50px;
-    
+
 }
 
 .fileChoose {
-
-
-    padding:140px;
-    border-radius:15px;
-    border-style: dotted;
-    border-color:white;
+    padding:180px;
+    border-width: 2px;
+    border-radius:5px;
+    border-style: solid;
+    border-color:whitesmoke;
     margin-top: 10px;
-    color:white;
+    color:whitesmoke;
 
 }
 
@@ -255,8 +314,8 @@ button {
     border-radius:15px;
     margin-top: 20px;
   }
-  
-  
+
+
 
 
 
@@ -264,40 +323,54 @@ button {
 
 .buttonCampaign {
 
-
     margin-top: 20px;
-    margin-left: 14px;
-    padding: 10px 200px;
+    margin-right: auto;
+    padding: 10px 100px;
     white-space: nowrap;
     text-align: center;
-} 
+    justify-content: center;
+}
 
+.bar1 {
+    background-color:#F5F5F5;
+    margin-top: 20px;
+    border: 1px solid gray;
+    height:17px;
+    color:white;
+}
+.progress-bar {
+    background-color: blueviolet;
+}
 .bar {
     background-color:transparent;
     margin-top: 20px;
-    height:23px;
-    width: 380px;
+    height:17px;
+    width: 470px;
     color:white;
-    
-}
-.progress-bar {
 
-    background-color: white;
 }
+
+progress{
+    background-color: #F5F5F5;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+progress::-webkit-progress-value {
+     background: blueviolet;
+     width: 100%; 
+}
+
 
 .rootdiv {
     background-image: url('https://i.imgur.com/1cGALG9.png');
     background-repeat: no-repeat;
     background-size: cover;
     width:100%;
-    margin: 0;
-    height: auto;
+    padding-top: 1px;
 
 }
-.root{
-    height: 100%;
-}
-
 
 html, body{
     /* Height and width fallback for older browsers. */
@@ -312,4 +385,10 @@ body > #root > div {
 
 .row {
     margin-top: 1.9em;
+    justify-content: space-between;
 }
+
+.titleAndImage img{
+    border-radius: 10px;
+}
+
