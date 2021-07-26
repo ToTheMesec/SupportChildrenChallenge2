@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Home from './pages/Home'
 import Campaign from "./pages/Campaign";
-import Discover from "./pages/Discover";
+// import Discover from "./pages/Discover";
 import Header from "./pages/Header"
 
 const Routing = () => {
@@ -15,7 +15,7 @@ const Routing = () => {
             <Header/>
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route path="/discover" component={Discover} />
+                {/*<Route path="/discover" component={Discover} />*/}
                 <Route path="/create-campaign" component={App} />
                 <Route path="/campaign/:id" component={Campaign} />
             </Switch>

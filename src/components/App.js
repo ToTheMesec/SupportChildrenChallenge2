@@ -24,6 +24,7 @@ class App extends Component {
     const formData = new FormData();
     formData.append("file", this.state.selectedFile)
     formData.append("upload_preset", "nftauction")
+    this.onSubmit()
     axios.post("https://api.cloudinary.com/v1_1/tothemoon/image/upload", formData, {
       onUploadProgress: progressEvent => {
         console.log("Upload progress " + Math.round(progressEvent.loaded/progressEvent.total * 100) + "%")
@@ -40,7 +41,6 @@ class App extends Component {
       document.getElementById('fileChoose').style = "background-image: url('" + res.data.secure_url + "'); background-repeat: no-repeat; background-size: cover";
       document.getElementById('fileChoose').style.color = "rgba(0, 0, 0, 0)";
     })
-    this.onSubmit()
   }
 
   async componentWillMount() {
@@ -136,16 +136,29 @@ class App extends Component {
 
   createCampaign = (evt) => {
     evt.preventDefault()
+    evt.persist()
     var timestamp = Date.parse(this.state.date)
     timestamp/=1000
     this.state.contract.methods.createCampaign(this.state.name, this.state.desc, this.state.account, timestamp, (parseFloat(this.state.goal)*(10**18)).toString(), this.state.email, "https://ipfs.io/ipfs/" + this.state.ipfsHash)
-    .send({from: this.state.account}).then(evt => {
-      this.sendEmail()
+    .send({from: this.state.account}).then(() => {
+      evt.preventDefault();
+      //console.log("FFFFFFFFFF: " + evt.target.owner_mail)
+      emailjs.sendForm('service_7ksffb7', 'template_6x5plw4', evt.target, 'user_2AtKMM5Ljcoy0GZ33Dhia')
+          .then((result) => {
+            console.log(result.text);
+            const element = document.getElementById("alert");
+            const check = document.createElement('p');
+            check.innerHTML = "You have successfully created a campaign, good luck!";
+            check.style = "color: #00FF00; font-size: 22px;"
+            element.appendChild(check);
+          }, (error) => {
+            console.log(error.text);
+          });
+      // this.sendEmail(evt)
     })
   }
 
   updateNameValue(evt) {
-    console.log("Stavljamo vrednost imena: " + evt.target.value)
     this.setState({
       name: evt.target.value,
     });
@@ -175,21 +188,21 @@ class App extends Component {
     })
   }
 
-  sendEmail(e) {
-    e.preventDefault();
-
-    emailjs.sendForm('service_7zotz9y', 'template_xxy6n1q', e.target, 'user_4u7WjbA2GZUJYYM6i8nrV')
-        .then((result) => {
-          console.log(result.text);
-          const element = document.getElementById("alert");
-          const check = document.createElement('p');
-          check.innerHTML = "You have successfully created a campaign, good luck!";
-          check.style = "color: #00FF00; font-size: 20px;"
-          element.appendChild(check);
-        }, (error) => {
-          console.log(error.text);
-        });
-  }
+  // sendEmail(e) {
+  //   e.preventDefault();
+  //
+  //   emailjs.sendForm('service_7zotz9y', 'template_xxy6n1q', e.target, 'user_4u7WjbA2GZUJYYM6i8nrV')
+  //       .then((result) => {
+  //         console.log(result.text);
+  //         const element = document.getElementById("alert");
+  //         const check = document.createElement('p');
+  //         check.innerHTML = "You have successfully created a campaign, good luck!";
+  //         check.style = "color: #00FF00; font-size: 20px;"
+  //         element.appendChild(check);
+  //       }, (error) => {
+  //         console.log(error.text);
+  //       });
+  // }
 
   moveToDiscover = () => {
     ReactDOM.render(<Discover />, document.getElementById('root'))
@@ -216,12 +229,12 @@ class App extends Component {
                 <form style = {{borderBottom: '1px solid black'}} onSubmit ={evt => {this.createCampaign(evt)}}>
                   <div className="box">
                     <p className="nftext" id="naslov">Create campaign</p>
-                    <input  placeholder="Campaign title" type="text" name="name" onChange = {evt => this.updateNameValue(evt)} name = "campaign_name" required/>
+                    <input  placeholder="Campaign title" type="text" onChange = {evt => this.updateNameValue(evt)} name = "campaign_name" required/>
                     <div className="textarea">
-                      <input size="100" placeholder="Campaign description" type="text" onChange ={evt => this.updateDescValue(evt)} name = "campaign_description" required></input>
+                      <textarea size="100" placeholder="Campaign description" type="text" onChange ={evt => this.updateDescValue(evt)} name = "campaign_description" required></textarea>
                     </div>
                     <div className="numberarea">
-                      <input  placeholder="Campaign goal"type="number" onChange = {evt => this.updateCampaignGoal(evt)} name = "campaign_goal" required></input>
+                      <input  placeholder="Campaign goal"type="number" step="0.01"  onChange = {evt => this.updateCampaignGoal(evt)} name = "campaign_goal" required></input>
                     </div>
                     <div>
                     <p className="deadline" id="dva">Campaign deadline</p>
