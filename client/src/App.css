@@ -1,0 +1,1749 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #e5e5e5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+
+:root {
+    --prva: #533549;
+  }
+
+header  {
+    z-index: 997;
+    background-color: peru;
+    color: black;
+}
+
+.slika  {
+    height: 700px;
+    background-color: #FAFAFA;
+}
+
+.slika .ruke {
+
+    position:absolute;
+    width: 600px;
+    height: 600px;
+    z-index: 0;
+
+
+
+}
+.slika .strelica {
+
+    position:absolute;
+    width:400px;
+    height: 360px;
+    z-index: 1;
+    top: 470px;
+    right: 580px;
+
+    transform: rotate(-15deg);
+
+}
+
+#header.fixed-top {
+    background: #191919;
+}
+
+#header .logo {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+#header .logo a {
+    color: #fff;
+}
+
+#header .logo img {
+    max-height: 40px;
+}
+
+.scrolled-offset {
+    margin-top: 70px;
+}
+
+.navbar {
+    padding: 0;
+    position:sticky;
+    background: #FAFAFA;
+    font-weight: 400;
+    font: "Jost", sans-serif;
+    color: #484344;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar > ul > li {
+    margin-left: 5px;
+}
+
+.navbar a, .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 15px 24px 15px;
+    font-weight: 400;
+    white-space: nowrap;
+    transition: 0.3s;
+    text-decoration: 'none'; 
+    color: "#6c757d";
+}
+
+
+.box {
+    position: relative;
+    text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 60px;
+    border: 3px solid var(--druga);
+    padding: 40px;
+    display: inline-block;
+    width: 100%;
+    min-width: 300px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+   background:transparent;
+
+
+}
+
+.box1 {
+    position: relative;
+    align-items: center;
+    display: inline-block;
+    min-width: 300px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0px 5px 10px 1px;
+    transition: all 0.4s ease;
+    background:transparent;
+    margin-left: 10px;
+}
+.box-top{
+    border-bottom: 1px solid black;
+}
+.donationForm{
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+
+.donationTop{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.donationTop input{
+    width: 100%;
+    border: 1px solid gray;
+}
+
+.donationBottom input{
+    width: 75%;
+}
+
+
+
+.donationMail{
+    padding-right: 20px;
+    border: 1px solid black;
+}
+
+.nftext {
+
+    color: var(--druga);
+    font-size: 35px;
+    font-family: 'Roboto Slab', serif;
+    margin-left: 4px;
+
+
+}
+
+.deadline {
+
+    color: var(--druga);
+    font-size: 20px;
+    font-family: 'Roboto Slab', serif;
+    margin-left: 4px;
+    margin-top: 4px;
+    margin-bottom: -2px;
+
+}
+
+::placeholder {
+    color:black;
+    font-size:16px;
+}
+
+      /*
+      button {
+      display: block;
+      width: 200px;
+      padding: 10px;
+      margin: 20px auto 0;
+      border: none;
+      border-radius: 5px;
+      background: #1c87c9;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+      */
+
+      @media (min-width: 568px) {
+      .info {
+      flex-flow: row wrap;
+      justify-content: space-between;
+      }
+      input {
+      width: 46%;
+      }
+      input.fname {
+      width: 100%;
+      }
+      select {
+      width: 48%;
+      }
+      }
+
+.card{
+    width: 290px;
+    transform-style:preserve-3d;
+    box-shadow: 0 20px 20px rgba(0,0,0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    border-radius: 15px;
+    margin-bottom: 40px;
+
+}
+
+.card-body{
+  padding-bottom: 5px !important;
+}
+.card-title{
+    text-align: left;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 18px;
+    white-space: nowrap;
+    text-overflow: clip;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #484344;
+}
+
+.card-text{
+  overflow: hidden;
+  width: 240px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card img{
+    width: 100%;
+    height: 18rem;
+    border-radius: 12px 12px 0px 0px;
+    object-fit: cover;
+}
+
+
+.card:hover{
+    cursor: pointer;
+}
+
+#celaForma {
+    margin-left: 50px;
+    border-radius: 15px;
+    box-shadow: 20px 20px rgba(0,0,0,.15);
+}
+
+.labelButton {
+    justify-content: center;
+    align-items: center;
+    margin-left:50px;
+
+}
+
+.fileChoose {
+    padding:180px;
+    border-width: 2px;
+    border-radius:5px;
+    border-style: solid;
+    border-color:var(--druga);
+    margin-top: 10px;
+    color: var(--druga);
+
+}
+
+button {
+    background:transparent;
+    color: var(--druga);
+    padding: 10px;
+    border-radius:15px;
+    border: none;
+  }
+
+  button.uploader {
+    background:transparent;
+    color: var(--druga);
+    border: 2px solid var(--druga);
+    padding: 10px;
+    padding-left: 162px;
+    padding-right: 162px;
+    border-radius:15px;
+    margin-top: 20px;
+  }
+
+
+
+
+
+
+
+.buttonCampaign {
+
+    margin-top: 20px;
+    margin-right: auto;
+    padding: 10px 100px;
+    white-space: nowrap;  
+    text-align: center;
+    justify-content: center;
+    border: 2px solid var(--druga);
+}
+
+.bar1 {
+    background-color:#F5F5F5;
+    margin-top: 20px;
+    border: 1px solid gray;
+    height:17px;
+    color:white;
+}
+
+.bar {
+    background-color:transparent;
+    margin-top: 20px;
+    height:17px;
+    width: 470px;
+    color:white;
+}
+
+progress {
+    width: 100%;
+    height: 7px !important;
+}
+
+progress::-webkit-progress-bar{
+    background: #D1FFED;
+    width: 100%;
+    height: 7px !important;
+    
+}
+
+progress::-webkit-progress-value {
+     background: #42FF8D;
+     width: 100%;
+     height: 7px; 
+}
+
+
+
+.rootdiv {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:70%;
+    padding-top: 1px;
+    margin:auto;
+
+}
+
+form {
+    background-color: #FAFAFA;
+    padding: 20px;
+    border: 1px solid #ECEDEE;
+}
+
+html, body{
+    /* Height and width fallback for older browsers. */
+    min-height: 100%;
+    margin: 0;
+
+}
+
+body > #root > div {
+    height: 100vh;
+  }
+
+.row {
+    margin-top: 1.9em;
+    justify-content: space-between;
+}
+
+.titleAndImage img{
+    border-radius: 10px;
+}
+
+.campaign-content h3{
+    font-size: 50px;
+    padding-top: 50px;
+    font-family: 'Jost' sans-serif;
+}
+
+.campaign-content p{
+    font-size: 18px;
+    line-height: 2;
+    text-align: justify;
+    color: #7e7e7e;
+    word-wrap: break-word;
+}
+
+.campaign-content-top{
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: #fff;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    padding-top: 10px;
+    padding-bottom: 25px;
+}
+
+.campaign-image {
+    overflow: hidden;
+    background-color: black;
+    border: 1px solid gray;
+}
+  
+.campaign-image > img {
+    width: 100%;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: opacity 500ms ease, -webkit-transform 500ms ease;
+    transition: opacity 500ms ease, -webkit-transform 500ms ease;
+    transition: transform 500ms ease, opacity 500ms ease;
+    transition: transform 500ms ease, opacity 500ms ease,
+    -webkit-transform 500ms ease;
+    object-fit: cover;
+}
+
+.campaign-progress {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-top: 66px;
+    border-left: 1px solid #9e9e9e;
+    border-right: 1px solid #9e9e9e;
+    border-bottom: 1px solid #9e9e9e;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.campaign-progress-top {
+    width: 100%;
+    height: 9px;
+    position: relative;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.campaign-progress-top progress{
+    background-color: black;
+}
+
+.campaign-progress-bottom{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: 1px solid #e4e4e4;
+    padding-bottom: 30px;
+    margin-bottom: 23px;
+  }
+  
+.campaign-progress-bottom > p {
+    margin: 0;
+    line-height: 1;
+    font-size: 14px;
+    color: #7e7e7e;
+}
+  
+.campaign-progress-bottom > p strong {
+    font-weight: 400;
+    color: black;
+}
+
+.campaign-side{
+    padding-top: 120px;
+    margin-bottom: 80px;
+}
+
+.campaign-owner {
+    margin-bottom: 30px;
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    padding: 30px;
+    padding-left: 108px;
+    position: relative;
+  }
+  .campaign-donate{
+    display: grid;
+    margin-bottom: 30px;
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+}
+
+.campaign-donate input{
+    margin-top:10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid #7e7e7e;
+    padding: 3px;
+}
+
+.campaign-donate input::placeholder{
+    color: #7e7e7e;
+}
+
+.campaign-donate button{
+    width: 30%;
+    margin-top: 10px;
+}
+
+.campaign-donate p{
+    margin-bottom: 5px;
+}
+
+  
+@media (min-width: 768px) {
+    .campaign-owner {
+      padding: 50px;
+      padding-left: 128px;
+    }
+}
+  
+.campaign-owner > img {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    border-radius: 50%;
+}
+  
+@media (min-width: 768px) {
+    .campaign-owner > img {
+      left: 50px;
+      top: 50px;
+    }
+}
+  
+.campaign-owner p {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    color: green;
+}
+
+.campaign-owner h5 {
+    margin: 0;
+    color: #000000;
+    font-family: var(--thm-font);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+}
+
+.campaign-owner h3 {
+    margin: 0;
+    color: #6f6f6f;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 500;
+    font-family: var(--thm-font);
+    margin-top: 0px;
+    margin-bottom: 24px;
+    word-wrap: break-word;
+}
+  
+.campaign-owner h3 strong {
+    font-weight: 500;
+    color: var(--thm-black);
+}
+
+.campaign-donations{
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    padding: 30px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.campaign-donations-title{
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.campaign-donations-list {
+    margin-bottom: 0;
+}
+  
+.campaign-donations-list li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    padding-left: 80px;
+}
+
+.campaign-donations-list li::before {
+    content: "";
+    width: calc(100% + 40px);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    height: 100%;
+    border-radius: 15px;
+    background-color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+@media (min-width: 768px) {
+    .campaign-donations-list li::before {
+      width: calc(100% + 70px);
+    }
+}
+  
+.campaign-donations-list li:hover:before {
+    opacity: 1;
+    visibility: visible;
+}
+  
+.campaign-donations-list li > img {
+    border-radius: 50%;
+    left: 0;
+    top: 20px;
+    position: absolute;
+    z-index: 10;
+}
+  
+.campaign-donations-list li > img.anonymus {
+    -webkit-filter: brightness(0%);
+    filter: brightness(0%);
+}
+  
+.campaign-donations-list li p {
+    margin: 0;
+    color: green;
+    font-family: "Libre Baskerville", serif;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+    z-index: 10;
+}
+  
+.campaign-donations-list li h3 {
+    margin: 0;
+    line-height: 1;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1;
+    margin-top: 13px;
+    margin-bottom: 2px;
+    position: relative;
+    z-index: 10;
+    word-wrap: break-word;
+}
+  
+  #glavniH1 {
+
+   
+    font-family: 'Bebas Neue';
+    text-align: left;
+    text-decoration: none; 
+    color: "#000";
+    font-size: 60px; 
+    float: left;
+    z-index: 2;
+
+  }
+
+  #glavniH2 {
+      
+    
+    font-family: 'Bebas Neue';
+    margin-right:200px;
+    text-align: left;
+    position: relative;
+    color: "#000";
+    font-size: 20px;
+    float: left;  
+    z-index: 2;
+  }
+
+  #hero {
+
+    background-image: url('https://i.imgur.com/1AG1A4W.png');
+    background-repeat: no-repeat;
+    background-position: 250px -60px;
+    margin-bottom:160px;
+  }
+
+  #donacija {
+
+    align-items: center;
+    padding: 12px 32px;
+
+    position:relative;
+    background: #42FF8D;
+    border-radius: 6px;
+    text-align: center;
+    color:black;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+
+
+
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 16px 0px;
+    margin-top:200px;
+    margin-left: 90px;
+   
+  }
+
+  .total {
+
+    color: #212121;
+    font-family: 'Bebas Neue';
+    font-size: 40px;
+
+  }
+
+  .numberTotal {
+    background-image: url('https://i.imgur.com/60I6BoW.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:contain;
+    padding: 15px 5px;
+    font-size: 40px;
+    font-weight: bold;
+    
+    
+  }
+
+  #totalDonation {
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 60px;
+  
+
+  }
+
+  #everyone {
+    
+    display:block;
+    position: relative;
+    height:100%;
+    background-image:url('https://i.imgur.com/kK2fbJ4.png');
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position-x: 830px;
+    max-width: 1650px;
+    margin-left: 50px;   
+  }
+
+  .tekstEveryone {
+
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 150%;
+    display:inline-block;
+    float: left;
+    padding-right:1000px;
+
+  }
+
+  .together {
+      
+   
+    padding:6px;
+    width: 15%;
+
+    background: #FFF72F;
+    border-radius: 5px;
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 12px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  #change {
+
+    text-align: center;
+    font-size: 48px;
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: -0.02em;
+    color: #272425;
+
+  }
+
+  #parGoal {
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+
+
+
+    color: #484344;
+
+  }
+
+  .btnDonacije {
+
+    align-items: center;
+    padding: 10px 28px;
+    position: relative;
+    background: #42FF8D;
+    border-radius: 6px;
+    text-align: center;
+    color: black;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 16px 0px;
+    margin-left:38px;
+    
+  }
+
+.nekosranje{
+    background-color: pink;
+    overflow: hidden;
+    width: max;
+    height: 300px;
+    margin-bottom:20px;
+    margin-top:10px;
+ }
+
+
+.buttonfund{
+    background-color: #42FF8D;
+    border: solid;
+    border-color: #42FF8D;
+    color: black;
+    padding: 13px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+    transition-duration: 0.5s;
+}
+#random{
+    float: right;
+    padding-bottom: 20px;
+}
+  
+.buttonfund:hover{
+    background-color: white;
+    border: 1px solid #42ff8d;
+    color: #42FF8D;
+}
+
+.heading{
+    background-color: #fff;
+    overflow: hidden;
+}
+  
+.heading a{
+    color: #000;
+    font-family: Bebas Neue, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 50px;
+}
+
+
+.acinac{
+    background-color: #fff;
+    overflow: hidden;
+  }
+  
+.acinac{
+    color: #000;
+    style: bold;
+    text-align: left;
+    font-size: 20px;
+    font-family: Bebas Neue, Helvetica, sans-serif;
+}
+.acc{
+    width: 400px;
+    float: right;
+    border: 1px solid #fefefe;
+    border-radius: 15px;
+    display: inline-flex;
+    -webkit-box-shadow: -1px -1px 29px -9px rgba(0,0,0,0.19);
+    -moz-box-shadow: -1px -1px 29px -9px rgba(0,0,0,0.19);
+    box-shadow: -1px -1px 29px -9px rgba(0,0,0,0.19);
+    justify-content: center;
+}
+  
+.acc a{
+    spacing: 100px 1px;
+}
+.profimg{
+    margin-top: 27px;
+}
+
+.dist1{
+    float: center;
+    /* width: 1150px; */
+    position: absolute;
+    top: 50px;
+    /* margin: 50px auto; */
+    /* margin-left: 400px; */
+    left: 180px;
+}
+
+.dist2{
+    float: center;
+    width: 1150px;
+    position: absolute;
+    top: 50px;
+    margin: 50px auto;
+    margin-left: 170px;
+    left: 180px;
+}
+
+.toptext{
+    background-color: #fff;
+    overflow: hidden;
+    font-size: 40px;
+    height: 55px;
+    padding-bottom:30px;
+}
+  
+.toptext p{
+     color: #000;
+     text-align: center;
+     text-decoration: none;
+     font-family: Bebas Neue, Helvetica, sans-serif;
+}
+
+.textontop{
+	text-align: center;
+}
+
+.textontop p{
+	text-align: center;
+}
+
+.recent{
+    -webkit-box-shadow: -1px 0px 8px -4px rgba(0,0,0,1);
+    -moz-box-shadow: -1px 0px 8px -4px rgba(0,0,0,1);
+    box-shadow: -1px 0px 8px -4px rgba(0,0,0,1);
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.recent a{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+  
+.almost{
+    margin-top: 100px;
+    display: flex;
+    padding-left:50px;	
+    font-family: Bebas Neue, Helvetica, sans-serif;
+}
+
+.category{
+    height: 50px;
+    width: 175px;
+    padding: 0px 10px;
+    margin-top: 7px;
+    border-radius: 15px;
+    border: white;
+    -webkit-box-shadow: -1px 0px 8px -4px rgba(0,0,0,1);
+    -moz-box-shadow: -1px 0px 8px -4px rgba(0,0,0,1);
+    box-shadow: -1px 0px 8px -4px rgba(0,0,0,1);
+}
+
+.search{
+    margin-left: 300px;
+
+    border-radius: 15px;
+    border: white;
+    -webkit-box-shadow: -1px 0px 8px -4px rgba(0,0,0,1);
+    -moz-box-shadow: -1px 0px 8px -4px rgba(0,0,0,1);
+    box-shadow: -1px 0px 8px -4px rgba(0,0,0,1);
+    width: 244px;
+    height: 40px;
+}
+
+.formTitle {
+
+    color: var(--druga);
+    font-family: Bebas Neue;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 42px;
+    line-height: 43px;
+    letter-spacing: -0.02em;
+    float:left;
+    
+    color: #272425;
+    
+
+
+}
+
+.formUnderTitle {
+
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 33px;
+    line-height: 29px;
+    float:left;
+
+    letter-spacing: 0.05em;
+
+    color: #484344;
+}
+
+.fundraisingTitle {
+
+    margin-top: 30px;
+}
+
+
+.fundraisingTitle p{
+
+    float:left;
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 33px;
+    line-height: 29px;
+    margin-top: 15px;
+/* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #272425;
+}
+
+.fundraisingMainImage .paragraf{
+
+    float:left;
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 33px;
+    line-height: 29px;
+    margin-top: 15px;
+
+    letter-spacing: 0.05em;
+
+    color: #272425;
+}
+
+.fundraisingTitle input{
+
+
+    float:right;
+    margin-top:15px;  
+    border: 1px solid #ECEDEE;
+    height: 40px;  
+    margin-right: 130px;
+}
+
+.fundraisingTitle input[type=text]::placeholder {
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 150%;
+
+
+    letter-spacing: -0.02em;
+
+    color: #959595;
+}
+
+.fundraisingMainImage input{
+
+    float:right;
+    
+}
+
+.fundraisingMainImage p {
+
+    float:left;
+    display:block;
+    position:relative;
+    clear: both;
+
+}
+
+#uploadLabel {
+    
+    float:right;
+    background-image: url('https://i.imgur.com/doHALrg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 520px;
+    height: 110px;
+    border-radius: 15px;
+    position: relative;
+    margin-right: 120px;
+    border: 4px dotted #ECEDEE;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+
+.plus {
+
+    float:right;
+    width: 500px;
+    height: 100px;
+    
+}
+
+form #visina100{
+
+    height:100px;
+    border-top: 1px solid #ECEDEE;
+    
+}
+
+form #visina150{
+
+    height:200px;
+    border-top: 1px solid #ECEDEE;
+    
+}
+
+
+
+.amountNeed .paragraf {
+
+    float:left;
+    font-family: "Bebas Neue";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 33px;
+    line-height: 29px;
+    margin-top: 15px;
+
+    letter-spacing: 0.05em;
+
+    color: #272425;
+
+
+}
+
+.amountNeed p {
+
+    float:left;
+    display:block;
+    position:relative;
+    clear: both;
+
+}
+
+#amountNeedtekst {
+
+    margin-top: 30px;
+}
+
+#amountNeedbroj {
+
+    width: 200px;
+    float: right;
+    height: 40px;
+    border-radius: 15px;
+    position: relative;
+    margin-right: 50px;
+    border: 1px dotted #ECEDEE;
+}
+
+#kripto {
+
+    width: 100px;
+    float: right;
+    height: 40px;
+    border-radius: 15px;
+    position: relative;
+    border: 1px dotted #ECEDEE;
+}
+
+#amountNeedbroj::placeholder {
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 150%;
+
+
+    letter-spacing: -0.02em;
+
+    color: #959595;
+}
+
+textarea::placeholder {
+
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 150%;
+
+
+    letter-spacing: -0.02em;
+
+    color: #959595;
+}
+
+select, option {
+
+    
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 150%;
+
+
+    letter-spacing: -0.02em;
+
+    color: #959595;
+}
+
+#inputSelect {
+
+    margin-right:300px;
+    margin-bottom: 20px;
+
+}
+
+#textarea textarea {
+
+    float: right;
+    border: 1px solid #ECEDEE;
+    margin-right: 60px;
+    width: 600px;
+    height: 100px;
+    margin-bottom: 10px;
+    
+    
+
+}
+
+#categorySelect #category {
+
+    width: 600px;
+    height: 40px;
+    float: right;
+    margin-right: 50px;
+}
+
+input[type=date] {
+
+    float:right;
+    width: 600px;
+    height: 40px;
+        
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 150%;
+
+
+    letter-spacing: -0.02em;
+
+    color: #959595;
+    margin-right: 50px;
+}
+
+#create {
+
+    justify-content: center;
+    align-items: center;
+    padding: 12px 32px;
+
+  
+    width: 260px;
+    height: 65px;
+
+
+    background: #42FF8D;
+    border-radius: 6px;
+
+
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 10px 0px;
+    color:#212121;
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+
+
+    text-align: center;
+    font-feature-settings: 'salt' on, 'liga' off;
+
+}
+
+.dugmeCreate {
+
+    text-align:center !important;  
+    height:100px;
+    align-items: center;;
+}
+
+.dugmeCreate button{
+
+    text-align:center !important;  
+    align-items: center;
+}
+
+.uploadBtn{
+    margin-left: 850px;
+    margin-top: -10px;
+    background-color: #42FF8D;
+    border: 0;
+    font-family: Bebas Neue;
+    font-size: 20px;
+    color: #282C35;
+    margin-bottom: 10px;
+}
+
+.uploadBtn:hover{
+    background-color: #42FF8D;
+}
+
+.campSlika{
+    border-radius: 10px;
+    background-color: transparent;
+    height: 340px;
+    left: 0px;
+    mix-blend-mode: normal;
+    position: absolute;
+    top: 0px;
+    width: 729px;
+}
+
+.title{
+    background-color: #fff;
+    overflow: hidden;
+    margin-top: 40px;
+    font-family: Bebas Neue;
+  }
+  
+.title a{
+    background-color: transparent;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 165px;
+    letter-spacing: -0.96px;
+    line-height: normal;
+    mix-blend-mode: normal;
+    position: absolute;
+    text-align: left;
+    top: 112px;
+    width: 578px;
+}
+
+
+.mainsell{
+    background-color: transparent;
+    left: 165px;
+    position: absolute;
+    top: 178px;
+    width: 729px;
+}
+
+.buttonsfraime{
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    -webkit-box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.36);
+    -moz-box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.36);
+    box-shadow: -1px 3px 5px 0px rgba(0,0,0,0.36);
+    height: 394px;
+    left: 925px;
+    mix-blend-mode: normal;
+    position: absolute;
+    top: 178px;
+    width: 400px;
+}
+
+.timeleft{
+    background-color: transparent;
+    height: 29px;
+
+    margin-bottom: -20px;
+    font-family: Bebas Neue;
+    width: 304px;
+    margin-top: -15px;
+
+}
+
+.timetext{
+    background-color: transparent;
+    height: 29px;
+    left: 0px;
+    letter-spacing: 1.20px;
+    line-height: normal;
+    mix-blend-mode: normal;
+    text-align: left;
+    top: 5px;
+    width: auto;
+	font-size:22px;
+    padding-left:10px;
+    display: flex;
+} 
+
+.timeclock{
+    background-color: #d1ffed;
+    border-radius: 4px;
+    right: 1px;
+	top: 10px;
+    mix-blend-mode: normal;
+	padding: 3px;
+    font-size: 12px;
+    float: right;
+    margin-top: -29px;
+}
+.buttonPos{
+	padding-top:40px;
+}
+
+.buttonCamp{
+    background-color: #42FF8D;
+    border: solid;
+    border-color: #42FF8D;
+    color: black;
+    padding: 14px 110px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+    transition-duration: 0.5s;
+}
+  
+  
+.buttonCamp:hover{
+    background-color: white;
+    border-color: #42FF8D;
+    border: solid;
+    border-size: 1px;
+    color: #42FF8D;
+}
+
+.seealldonators{
+    background-color: white;
+    border: solid;
+    border-color: #42FF8D;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    border-radius: 6px;
+    transition-duration: 0.5s;
+    margin-top: 10px;
+}
+  
+.seealldonators:hover{
+    background-color: #42FF8D;
+    border-color: #42FF8D;
+    border: solid;
+    color: white;
+}
+  
+.listofdon{
+    padding-top:5px;
+}
+  
+.lasttopdon{
+    padding-top:5px;
+    padding-bottom:5px;  
+}
+
+.categoryCampView{
+    border-radius: 4px;
+    mix-blend-mode: normal;
+	padding: 3px;
+    font-size: 12px;
+    padding-right: 10px;
+}
+
+.middle{
+	left: 100px;
+}
+
+.desc{
+    margin-left: 170px;
+    display: block;
+    margin-top: 500px;
+    font-family: Open Sans;
+}
+
+.desc a{
+    color: black;
+    background-color: #d1ffed;
+    border-radius: 10px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.desc p{
+    width: 700px;
+    padding-top: 20px;
+    color: #484344;
+}
+
+.addressCampView{
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+ol{
+ padding: 10px !important;  
+}
+
+.alloncenter{
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    float: center;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.returntofundraise a{
+    font-size:10px;
+}
+  
+.returntofundraise img{
+    position:relative;
+    float: left;
+    top: 5px;
+}
+
+.fundinfotext{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;
+    font-family: 'Bebas Neue';
+}
+
+.image15{
+    width: 900px;
+    height: 300px;
+    margin-right: 0px;
+}
+  
+.image15 img{
+    height: 250px;
+    width: 450px;
+    border-radius: 12px;
+}
+
+.thankyou{
+    position: relative;
+    float: right;
+    right: -50px;
+    font-size: 35px;
+    font-family: 'Bebas Neue';
+    width: 450px;
+}
+  
+.thankyou p{
+    color: #79808E;
+}
+  
+.thankyou a{
+    color: #212121;
+}
+
+.enterText{
+    font-size: 30px;
+    font-style: bold;
+    font-family: 'Bebas Neue';
+}
+  
+.cryptolist{
+    padding:20px 20px 20px 20px;
+}
+
+.buttonFundCamp{
+    background-color: #42FF8D;
+    border: solid;
+    border-color: #42FF8D;
+    color: black;
+    padding: 14px 350px;
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 6px;
+    transition-duration: 0.5s;
+    font-family: Bebas Neue;
+
+}
+
+.listofitems{
+    position:relative;
+    top: -60px;
+}
+  
+.buttonFundCamp:hover{
+    background-color: white;
+    border-color: #42FF8D;
+    border: solid;
+    color: #42FF8D;
+
+}
+  
+.claimnft{
+     background-repeat: no-repeat;
+     background-position: center;
+     font-family: Bebas Neue;
+     font-size: 20px;
+     padding-top: 20px;
+     padding-bottom:40px;
+}
+.inputform{
+	padding: 12px 20px;
+    margin: 8px 0;
+	border: none;
+	font-size: 30px;
+	font-family: 'Bebas Neue';
+}
